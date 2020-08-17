@@ -13,7 +13,7 @@ object Demo {
         // prints Hello World 
         println("Welcome to GIT")
         println("Welcome to CI/CD POC")
-        println("Welcome to the world of DevOps world")
+        println("This is iteration 1")
         sc.stop()
     } 
 }
