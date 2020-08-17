@@ -14,6 +14,7 @@ object Demo {
         println("Welcome to GIT")
         println("Welcome to CI/CD POC")
         println("This is iteration 1")
+        println("Welcome to DevOps")
         sc.stop()
     } 
 }
