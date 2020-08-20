@@ -15,7 +15,6 @@ object Demo {
         println("Welcome to CI/CD POC")
         println("Welcome to the world of DevOps world")
         println("Welcome back !!!")
-        println("sab bakchodi hai !!!!")
         sc.stop()
     } 
 }
