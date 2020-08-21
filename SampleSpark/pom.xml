@@ -35,17 +35,6 @@
   <sourceDirectory>src/main/scala</sourceDirectory>
   <testSourceDirectory>src/test/scala</testSourceDirectory>
   	<plugins>
-  	<plugin>
-	        <groupId>org.apache.maven.plugins</groupId>
-	        <artifactId>maven-jar-plugin</artifactId>
-	        <version>3.2.0</version>
-	        <configuration>
-                <classesDirectory>src</classesDirectory>
-                <excludes>
-                    <exclude>**</exclude>
-                </excludes>
-            </configuration>
-	    </plugin>
   		<plugin>
             <artifactId>maven-compiler-plugin</artifactId>
             <version>3.6.1</version>
@@ -53,26 +42,7 @@
                 <source>1.8</source>
                 <target>1.8</target>
             </configuration>			
-        </plugin>
-        <plugin>
-    <groupId>org.codehaus.mojo</groupId>
-    <artifactId>build-helper-maven-plugin</artifactId>
-    <version>1.8</version>
-    <executions>
-        <execution>
-            <id>add-source</id>
-            <phase>generate-sources</phase>
-            <goals>
-                <goal>add-source</goal>
-            </goals>
-            <configuration>
-                <sources>
-                    <source>src/main/scala</source>
-                </sources>
-            </configuration>
-        </execution>
-    </executions>
-</plugin>
+        </plugin>      
   	</plugins>
   </build>
 </project>
