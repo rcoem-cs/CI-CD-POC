@@ -53,7 +53,7 @@
   	</distributionManagement>
 	
 <build>
-	<sourceDirectory>src/main/scala</sourceDirectory>
+	<sourceDirectory>/var/lib/jenkins/workspace/testing/SampleSpark/src/main/scala</sourceDirectory>
     
     <plugins>
 	    <plugin>
