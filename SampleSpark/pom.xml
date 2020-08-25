@@ -1,5 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>SparkProgramming</groupId>
@@ -7,27 +7,100 @@
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>SampleSpark</name>
-  <url>http://maven.apache.org</url>
-
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <!-- Component versions are defined here -->
+    <hadoop.version>2.7.3.2.6.5.1100-53</hadoop.version>
+    <scala.version>2.11.8</scala.version>
+    <spark.version>2.3.0.2.6.5.1100-53</spark.version>
   </properties>
 
+  <repositories>
+    <repository>
+      <id>HDP-public</id>
+      <name>Hortonworks public groups repo</name>
+      <url>http://repo.hortonworks.com/content/groups/public/</url>
+    </repository>    
+    <repository>
+      <id>scala-tools.org</id>
+      <name>Scala-tools Maven2 Repository</name>
+      <url>http://scala-tools.org/repo-releases</url>
+    </repository>
+  </repositories>
+
+  <pluginRepositories>
+    <pluginRepository>
+      <id>scala-tools.org</id>
+      <name>Scala-tools Maven2 Repository</name>
+      <url>http://scala-tools.org/repo-releases</url>
+    </pluginRepository>
+  </pluginRepositories>
+
   <dependencies>
+    <!-- Scala -->
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
+      <groupId>org.scala-lang</groupId>
+      <artifactId>scala-library</artifactId>
+      <version>2.11.11</version>
+      <scope>provided</scope>
     </dependency>
-  <!-- https://mvnrepository.com/artifact/org.apache.spark/spark-core -->
-	<dependency>
-    	<groupId>org.apache.spark</groupId>
-    	<artifactId>spark-core_2.11</artifactId>
-    	<version>2.1.1</version>
-    	<scope>compile</scope>
-	</dependency>
+    <!-- Spark -->
+    <dependency>
+      <groupId>org.apache.spark</groupId>
+      <artifactId>spark-core_2.11</artifactId>
+      <version>2.1.1</version>
+      <scope>provided</scope>
+    </dependency>
   </dependencies>
-  
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.scala-tools</groupId>
+        <artifactId>maven-scala-plugin</artifactId>
+        <version>2.15.2</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>compile</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.5.1</version>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+          <compilerArgs>
+            <arg>-Xlint:unchecked</arg>
+          </compilerArgs>
+          <showDeprecation>true</showDeprecation>
+          <showWarnings>true</showWarnings>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <configuration>
+          <descriptorRefs>
+            <descriptorRef>jar-with-dependencies</descriptorRef>
+          </descriptorRefs>
+        </configuration>
+        <executions>
+          <execution>
+            <id>make-assembly</id>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
 </project>
