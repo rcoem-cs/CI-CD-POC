@@ -9,4 +9,9 @@ class UnitTestCases {
   @Test def countWords {
       assertTrue(true)
   }
+  
+  @Test def checkTotal {
+      assertTrue(true)
+  }
+  
 }
