@@ -1,5 +1,3 @@
-package test.wordcount
-
 import org.junit.Test
 import org.junit._
 import org.junit.Assert._
