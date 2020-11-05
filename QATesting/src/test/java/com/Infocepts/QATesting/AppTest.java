@@ -34,8 +34,7 @@ public class AppTest
      */
     public void testApp()
     {
-    	System.out.println("Reached testApp()");
-    	//new QATest().test1();
+    	assertTrue( true );
         
     }
 }
