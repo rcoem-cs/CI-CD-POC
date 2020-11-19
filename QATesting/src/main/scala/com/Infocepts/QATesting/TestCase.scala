@@ -9,7 +9,7 @@ object TestCase {
     val text = spark.read.textFile("/user/cicd/input.txt")
     import spark.implicits._
     val cnt = text.flatMap(line => line.split(" ")).count.asInstanceOf[Int]
-    val df = spark.sql("select wordcount from cicdpoc.wordcount_dev limit 10").toDF
+    val df = spark.sql("select wordcount from cicdpoc.wordcount_dev").toDF
     val num = df.rdd.map(_(0).asInstanceOf[Int]).reduce(_+_)
     if (cnt == num){
       println("Test case has passed !!!!")
