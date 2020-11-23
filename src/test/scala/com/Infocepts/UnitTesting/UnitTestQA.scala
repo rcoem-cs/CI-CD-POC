@@ -10,6 +10,7 @@ class UnitTestQA extends FunSuite with BeforeAndAfterAll{
     val sparkAppConf = new SparkConf()
     sparkAppConf.set("spark.app.name","WordCount Program")
     sparkAppConf.set("spark.master","local[3]")
+    sparkAppConf.set("hive.metastore.uris","thrift://im-hdp-mgr1.infocepts.com:9083")
 
 
     val spark = SparkSession.builder()

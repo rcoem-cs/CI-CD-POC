@@ -10,6 +10,7 @@ object DevCode {
     sparkAppConf.set("spark.master","local[3]")
     sparkAppConf.set("spark.sql.debug.maxToStringFields","1000")
     sparkAppConf.set("spark.sql.shuffle.partitions","2")
+    sparkAppConf.set("hive.metastore.uris","thrift://im-hdp-mgr1.infocepts.com:9083")
 
 
     val spark = SparkSession.builder()
