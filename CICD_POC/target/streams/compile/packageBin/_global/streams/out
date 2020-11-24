@@ -1,0 +1,17 @@
+[debug] Packaging C:\Users\vinit.aswale\IdeaProjects\CICD_POC\target\scala-2.12\cicd_poc_2.12-0.1.jar ...
+[debug] Input file mappings:
+[debug] 	com
+[debug] 	  C:\Users\vinit.aswale\IdeaProjects\CICD_POC\target\scala-2.12\classes\com
+[debug] 	com\Infocepts
+[debug] 	  C:\Users\vinit.aswale\IdeaProjects\CICD_POC\target\scala-2.12\classes\com\Infocepts
+[debug] 	com\Infocepts\POC
+[debug] 	  C:\Users\vinit.aswale\IdeaProjects\CICD_POC\target\scala-2.12\classes\com\Infocepts\POC
+[debug] 	com\Infocepts\POC\DevCode$$typecreator12$1.class
+[debug] 	  C:\Users\vinit.aswale\IdeaProjects\CICD_POC\target\scala-2.12\classes\com\Infocepts\POC\DevCode$$typecreator12$1.class
+[debug] 	com\Infocepts\POC\DevCode$$typecreator7$1.class
+[debug] 	  C:\Users\vinit.aswale\IdeaProjects\CICD_POC\target\scala-2.12\classes\com\Infocepts\POC\DevCode$$typecreator7$1.class
+[debug] 	com\Infocepts\POC\DevCode$.class
+[debug] 	  C:\Users\vinit.aswale\IdeaProjects\CICD_POC\target\scala-2.12\classes\com\Infocepts\POC\DevCode$.class
+[debug] 	com\Infocepts\POC\DevCode.class
+[debug] 	  C:\Users\vinit.aswale\IdeaProjects\CICD_POC\target\scala-2.12\classes\com\Infocepts\POC\DevCode.class
+[debug] Done packaging.
