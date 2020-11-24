@@ -1,6 +1,7 @@
 package com.Infocepts.POC
 
 import org.apache.spark.SparkConf
+import org.apache.spark.sql.functions.current_timestamp
 import org.apache.spark.sql.{DataFrame, Dataset, SparkSession}
 
 object DevCode {
@@ -20,6 +21,8 @@ object DevCode {
     val inputFile = spark.read.textFile("/user/cicd/input.txt")
 
     val counts = wrdCount(spark,inputFile)
+
+    counts.withColumn("CreationTimeStamp",current_timestamp())
 
     spark.sql("create database if not exists cicdpoc").show()
     counts.createOrReplaceTempView("wordcount")
