@@ -22,10 +22,10 @@ object DevCode {
 
     val counts = wrdCount(spark,inputFile)
 
-    counts.withColumn("CreationTimeStamp",current_timestamp())
+    val CountsDF = counts.withColumn("CreationTimeStamp",current_timestamp())
 
     spark.sql("create database if not exists cicdpoc").show()
-    counts.createOrReplaceTempView("wordcount")
+    CountsDF.createOrReplaceTempView("wordcount")
     spark.sql("drop table if exists cicdpoc.wordcount_"+ args(0))
     spark.sql("create table cicdpoc.wordcount_"+ args(0) + " as select * from wordcount").show()
     val df = spark.sql("select wordcount from cicdpoc.wordcount_dev").toDF
