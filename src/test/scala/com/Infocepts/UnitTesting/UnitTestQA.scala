@@ -27,7 +27,7 @@ class UnitTestQA extends FunSuite with BeforeAndAfterAll{
 
 
 
-    assert(wordMap("Butter") == 2,"Count for Butter should be 2")
+    assert(wordMap("Butter") == 20,"Count for word -> Butter should be 2")
 
 
 
