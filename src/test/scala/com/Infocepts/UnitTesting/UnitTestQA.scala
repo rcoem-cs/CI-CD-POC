@@ -1,34 +1,38 @@
 package com.Infocepts.UnitTesting
 
+import com.Infocepts.POC.DevCode.wrdCount
 import org.apache.spark.SparkConf
 import org.apache.spark.sql.SparkSession
 import org.scalatest.{BeforeAndAfterAll, FunSuite}
 
+import scala.collection.parallel.mutable
+
 class UnitTestQA extends FunSuite with BeforeAndAfterAll{
   test("Count Words"){
-
     val sparkAppConf = new SparkConf()
-    sparkAppConf.set("spark.app.name","WordCount Program")
+    sparkAppConf.set("spark.app.name","Unit test cases")
     sparkAppConf.set("spark.master","local[3]")
-    sparkAppConf.set("hive.metastore.uris","thrift://im-hdp-mgr1.infocepts.com:9083")
-
 
     val spark = SparkSession.builder()
       .config(sparkAppConf)
-      .enableHiveSupport()
       .getOrCreate()
 
-    import spark.implicits._
-    val text = spark.read.textFile("input.txt")
-    val cnt = text.flatMap(line => line.split(" ")).count.asInstanceOf[Int]
-    val df = spark.sql("select wordcount from cicdpoc.wordcount_dev").toDF
-    val num = df.rdd.map(_(0).asInstanceOf[Int]).reduce(_+_)
+    val inputFile = spark.read.textFile("input.txt")
 
-    println("cnt->"+cnt)
-    println("num->"+num)
+    val result = wrdCount(spark,inputFile)
 
-    assert(cnt == num)
+    val wordMap = new mutable.ParHashMap[String,Integer]
+    result.collect().foreach(r => wordMap.put(r.getString(0),r.getInt(1)))
 
-    spark.stop()
+
+
+
+    assert(wordMap("Butter") == 2,"Count for Butter should be 2")
+
+
+
+
+
+
   }
 }

@@ -1,7 +1,7 @@
 package com.Infocepts.POC
 
 import org.apache.spark.SparkConf
-import org.apache.spark.sql.SparkSession
+import org.apache.spark.sql.{DataFrame, Dataset, SparkSession}
 
 object DevCode {
   def main(args: Array[String]): Unit = {
@@ -17,10 +17,9 @@ object DevCode {
       .config(sparkAppConf)
       .enableHiveSupport()
       .getOrCreate()
-    val text = spark.read.textFile("/user/cicd/input.txt")
+    val inputFile = spark.read.textFile("/user/cicd/input.txt")
 
-    import spark.implicits._
-    val counts = text.flatMap(line => line.split(" ")).map(word => (word,1)).rdd.reduceByKey(_+_).toDF("word","wordcount")
+    val counts = wrdCount(spark,inputFile)
 
     spark.sql("create database if not exists cicdpoc").show()
     counts.createOrReplaceTempView("wordcount")
@@ -30,5 +29,10 @@ object DevCode {
     df.show()
 
     spark.stop()
+  }
+
+  def wrdCount(spark:SparkSession,inputFile:Dataset[String]):DataFrame = {
+    import spark.implicits._
+    inputFile.flatMap(line => line.split(" ")).map(word => (word,1)).rdd.reduceByKey(_+_).toDF("word","wordcount")
   }
 }
